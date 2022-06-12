@@ -1,0 +1,96 @@
+#ifndef __VEC_H__
+#define __VEC_H__
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+struct subject_v
+{
+	int numb_group;
+	int code_dis; //индекс в справочнике (массив) дисциплин
+	short day;
+	short numb_p;
+	short numb_audit;
+	short code_type; //индекс в справочнике(массив) вида зан€тий и часов
+};
+
+void input_v(subject_v& oneclass) {
+	cout << "¬ведите номер группы: ";
+	cin >> oneclass.numb_group;
+	cout << "\n¬ведите код дисциплины: ";
+	cin >> oneclass.code_dis;
+	cout << "\n¬ведите день недели: ";
+	cin >> oneclass.day;
+	cout << "\n¬ведите номер пары: ";
+	cin >> oneclass.numb_p;
+	cout << "\n¬ведите номер аудитории: ";
+	cin >> oneclass.numb_audit;
+	cout << "\n¬ведите код вида зан€ти€: ";
+	cin >> oneclass.code_type;
+}
+
+void input_schedule_v(vector <subject_v>& schedule, int& N) { //2
+	for (int i = 0; i < N; i++) {
+		for (int j = 0; j < N - 1; j++) {
+			if (schedule[j].day > schedule[j + 1].day) {
+				int b = schedule[j].day;
+				schedule[j].day = schedule[j + 1].day;
+				schedule[j + 1].day = b;
+			}
+		}
+	}
+}
+
+void delete_v(vector <subject_v>& schedule, int& N, int code) //3
+{
+	vector <int> index;
+	for (int i = 0; i < N; i++) {
+		if (schedule[i].code_dis == code) {
+			index.push_back(i);
+		}
+	}
+	int k = 0, i = 0;
+	while (k < N) {
+		if (find(index.begin(), index.end(), i) != index.end()) {
+			if (k != N - 1) {
+				subject temp = schedule[N - 1];
+				schedule[N - 1] = schedule[k];
+				for (int j = k; j < N - 2; j++) {
+					schedule[j] = schedule[j + 1];
+				}
+				schedule[N - 2] = temp;
+				N--;
+				k--;
+			}
+			else {
+				N--;
+			}
+		}
+		k++;
+		i++;
+	}
+}
+void count_hours_v(vector <subject_v>& schedule, int& N, distype* disdictionary) {
+	int h_t0 = 0, h_t1 = 0, h_t2 = 0, h_t3 = 0;
+	for (int i = 0; i < N; i++) {
+		if (schedule[i].code_type == 0) {
+			h_t0 += 1;
+		}
+		else if (schedule[i].code_type == 1) {
+			h_t1 += 1;
+		}
+		else if (schedule[i].code_type == 2) {
+			h_t2 += 1;
+		}
+		else if (schedule[i].code_type == 3) {
+			h_t3 += 1;
+		}
+	}
+	cout << endl;
+	cout << setw(30) << left << disdictionary[0].type << " - " << disdictionary[0].hours * h_t0 << " часа(ов) в неделю\n";
+	cout << setw(30) << left << disdictionary[1].type << " - " << disdictionary[1].hours * h_t1 << " часа(ов) в неделю\n";
+	cout << setw(30) << left << disdictionary[2].type << " - " << disdictionary[2].hours * h_t2 << " часа(ов) в неделю\n";
+	cout << setw(30) << left << disdictionary[3].type << " - " << disdictionary[3].hours * h_t3 << " часа(ов) в неделю\n";
+}
+#endif
