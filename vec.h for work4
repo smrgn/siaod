@@ -8,25 +8,25 @@ using namespace std;
 struct subject_v
 {
 	int numb_group;
-	int code_dis; //индекс в справочнике (массив) дисциплин
+	int code_dis; //ГЁГ­Г¤ГҐГЄГ± Гў Г±ГЇГ°Г ГўГ®Г·Г­ГЁГЄГҐ (Г¬Г Г±Г±ГЁГў) Г¤ГЁГ±Г¶ГЁГЇГ«ГЁГ­
 	short day;
 	short numb_p;
 	short numb_audit;
-	short code_type; //индекс в справочнике(массив) вида занятий и часов
+	short code_type; //ГЁГ­Г¤ГҐГЄГ± Гў Г±ГЇГ°Г ГўГ®Г·Г­ГЁГЄГҐ(Г¬Г Г±Г±ГЁГў) ГўГЁГ¤Г  Г§Г Г­ГїГІГЁГ© ГЁ Г·Г Г±Г®Гў
 };
 
 void input_v(subject_v& oneclass) {
-	cout << "Введите номер группы: ";
+	cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г­Г®Г¬ГҐГ° ГЈГ°ГіГЇГЇГ»: ";
 	cin >> oneclass.numb_group;
-	cout << "\nВведите код дисциплины: ";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г¤ Г¤ГЁГ±Г¶ГЁГЇГ«ГЁГ­Г»: ";
 	cin >> oneclass.code_dis;
-	cout << "\nВведите день недели: ";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г¤ГҐГ­Гј Г­ГҐГ¤ГҐГ«ГЁ: ";
 	cin >> oneclass.day;
-	cout << "\nВведите номер пары: ";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г­Г®Г¬ГҐГ° ГЇГ Г°Г»: ";
 	cin >> oneclass.numb_p;
-	cout << "\nВведите номер аудитории: ";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г­Г®Г¬ГҐГ° Г ГіГ¤ГЁГІГ®Г°ГЁГЁ: ";
 	cin >> oneclass.numb_audit;
-	cout << "\nВведите код вида занятия: ";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г¤ ГўГЁГ¤Г  Г§Г Г­ГїГІГЁГї: ";
 	cin >> oneclass.code_type;
 }
 
@@ -88,9 +88,9 @@ void count_hours_v(vector <subject_v>& schedule, int& N, distype* disdictionary)
 		}
 	}
 	cout << endl;
-	cout << setw(30) << left << disdictionary[0].type << " - " << disdictionary[0].hours * h_t0 << " часа(ов) в неделю\n";
-	cout << setw(30) << left << disdictionary[1].type << " - " << disdictionary[1].hours * h_t1 << " часа(ов) в неделю\n";
-	cout << setw(30) << left << disdictionary[2].type << " - " << disdictionary[2].hours * h_t2 << " часа(ов) в неделю\n";
-	cout << setw(30) << left << disdictionary[3].type << " - " << disdictionary[3].hours * h_t3 << " часа(ов) в неделю\n";
+	cout << setw(30) << left << disdictionary[0].type << " - " << disdictionary[0].hours * h_t0 << " Г·Г Г±Г (Г®Гў) Гў Г­ГҐГ¤ГҐГ«Гѕ\n";
+	cout << setw(30) << left << disdictionary[1].type << " - " << disdictionary[1].hours * h_t1 << " Г·Г Г±Г (Г®Гў) Гў Г­ГҐГ¤ГҐГ«Гѕ\n";
+	cout << setw(30) << left << disdictionary[2].type << " - " << disdictionary[2].hours * h_t2 << " Г·Г Г±Г (Г®Гў) Гў Г­ГҐГ¤ГҐГ«Гѕ\n";
+	cout << setw(30) << left << disdictionary[3].type << " - " << disdictionary[3].hours * h_t3 << " Г·Г Г±Г (Г®Гў) Гў Г­ГҐГ¤ГҐГ«Гѕ\n";
 }
 #endif
